@@ -38,7 +38,7 @@ class LoginComponent extends Component {
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
-                <p className="login-message">{message}</p>
+                <p className="success-message">{message}</p>
             </div>
         );
     }
