@@ -26,7 +26,7 @@ class ContactComponent extends Component {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/contacts', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -50,7 +50,7 @@ class ContactComponent extends Component {
     const { name, email, phone, address, timezone } = this.state;
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ class ContactComponent extends Component {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:5000/api/upload/csv', {
+      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/upload/csv', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -116,39 +116,19 @@ class ContactComponent extends Component {
       <div className="contacts-container">
         <form onSubmit={this.handleAddContact}>
           <h2>Add New Contact</h2>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
+          <input type="text" name="name" placeholder="Name" value={name}
             onChange={this.handleChange}
           />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
+          <input type="email" name="email" placeholder="Email" value={email}
             onChange={this.handleChange}
           />
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone"
-            value={phone}
+          <input type="text" name="phone" placeholder="Phone" value={phone}
             onChange={this.handleChange}
           />
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={address}
+          <input type="text" name="address" placeholder="Address" value={address}
             onChange={this.handleChange}
           />
-          <input
-            type="text"
-            name="timezone"
-            placeholder="Timezone"
-            value={timezone}
+          <input type="text" name="timezone" placeholder="Timezone" value={timezone}
             onChange={this.handleChange}
           />
           <button type="submit">Add Contact</button>

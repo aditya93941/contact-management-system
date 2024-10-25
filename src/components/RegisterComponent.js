@@ -12,7 +12,7 @@ class RegisterComponent extends Component {
     const { email, password, name } = this.state;
 
     try {
-      const response = await fetch('http://localhost:5000/api/register', {
+      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, name }),
