@@ -72,15 +72,14 @@ class ContactComponent extends Component {
     }
   };
 
-  handleChange = (e) => {
+  handleChange = (e) =>{
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleFileChange = (e) => {
     this.setState({ file: e.target.files[0] });
   };
-
-  handleFileUpload = async (e) => {
+  handleFileUpload = async (e) =>{
     e.preventDefault();
     const { file } = this.state;
 
@@ -88,7 +87,6 @@ class ContactComponent extends Component {
       this.setState({ error: 'Please select a file to upload.' });
       return;
     }
-
     const formData = new FormData();
     formData.append('file', file);
 
