@@ -8,7 +8,6 @@ class ContactComponent extends Component {
     phone: '',
     address: '',
     timezone: '',
-    file: null,
     message: '',
     error: ''
   };
@@ -76,38 +75,7 @@ class ContactComponent extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleFileChange = (e) => {
-    this.setState({ file: e.target.files[0] });
-  };
-  handleFileUpload = async (e) =>{
-    e.preventDefault();
-    const { file } = this.state;
 
-    if (!file) {
-      this.setState({ error: 'Please select a file to upload.' });
-      return;
-    }
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/upload/csv', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: formData
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Upload failed');
-
-      this.setState({ message: data.message, error: '' });
-      await this.fetchContacts();
-    } catch (error) {
-      this.setState({ error: error.message });
-    }
-  };
 
   render() {
     const { contacts, name, email, phone, address, timezone, message, error } = this.state;
@@ -137,11 +105,6 @@ class ContactComponent extends Component {
         {message && <p className="success-message">{message}</p>}
         {error && <p className="error-message">{error}</p>}
 
-        <h2>Upload Contacts</h2>
-        <form onSubmit={this.handleFileUpload}>
-          <input type="file" onChange={this.handleFileChange} accept=".csv" required />
-          <button type="submit">Upload</button>
-        </form>
 
         <h2>Contacts List</h2>
         <ul>
