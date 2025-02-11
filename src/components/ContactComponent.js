@@ -25,7 +25,7 @@ class ContactComponent extends Component {
     }
 
     try {
-      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/contacts', {
+      const response = await fetch('https://contact-management-system-backend-1.onrender.com/api/contacts', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -49,7 +49,7 @@ class ContactComponent extends Component {
     const { name, email, phone, address, timezone } = this.state;
 
     try {
-      const response = await fetch('https://contact-management-system-backend-1h7p.onrender.com/api/contacts', {
+      const response = await fetch('https://contact-management-system-backend-1.onrender.com/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
